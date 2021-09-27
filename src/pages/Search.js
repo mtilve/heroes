@@ -76,20 +76,20 @@ function Search(props) {
     items.push(
       <Col
         key={997}
-        xs={6}
+        xs={12}
         md={4}
         className="d-flex justify-content-center"
       ></Col>
     );
     items.push(
-      <Col key={998} xs={6} md={4} className="d-flex justify-content-center">
+      <Col key={998} xs={12} md={4} className="d-flex justify-content-center">
         Sin datos
       </Col>
     );
     items.push(
       <Col
         key={999}
-        xs={6}
+        xs={12}
         md={4}
         className="d-flex justify-content-center"
       ></Col>

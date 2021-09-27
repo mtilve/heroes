@@ -132,30 +132,30 @@ function CardTeam(props) {
       <Container className="mt-2 mb-2">
         <Row>
         <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center">
-            <Card style={{ width: "18rem" }}>
+            <Card className="mb-2" style={{ width: "18rem" }}>
               <Card.Body>
                   <ListGroup variant="flush">{content1}</ListGroup>
               </Card.Body>
             </Card>
           </Col>
           <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center">
-            <Card style={{ width: "18rem" }}>
+            <Card className="mb-2" style={{ width: "18rem" }}>
               <Card.Body>
                   <ListGroup variant="flush">{content2}</ListGroup>
               </Card.Body>
             </Card>
           </Col>
           <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center">
-            <Card style={{ width: "18rem" }}>
+            <Card className="mb-2" style={{ width: "18rem" }}>
               <Card.Body>
                   <ListGroup variant="flush">{content3}</ListGroup>
               </Card.Body>

@@ -11,21 +11,21 @@ function CardDetail(props) {
       <Container className="mt-2">
         <Row>
           <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center"
           >
-            <Card className="customCard" style={{ width: "18rem" }}>
+            <Card className="customCard mb-2" style={{ width: "18rem" }}>
               <Card.Title>{props.hero.name}</Card.Title>
               <Card.Img variant="top" src={props.hero.image} />
             </Card>
           </Col>
           <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center"
           >
-            <Card style={{ width: "18rem" }}>
+            <Card className="mb-2" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Text>
                   <ListGroup variant="flush">
@@ -63,11 +63,11 @@ function CardDetail(props) {
             </Card>
           </Col>
           <Col
-            xs={6}
+            xs={12}
             md={4}
             className="d-flex justify-content-center"
           >
-            <Card style={{ width: "18rem" }}>
+            <Card className="mt-2 mb-2" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>Powerstats</Card.Title>
                 <Card.Text>

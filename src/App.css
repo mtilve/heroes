@@ -1,20 +1,24 @@
-
 .customRow {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: #bbeffd;
-    border: 1px solid #61dafb;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: #bbeffd;
+  border: 1px solid #61dafb;
 }
 
 .customButton {
-    min-width: 25%;
+  min-width: 25%;
 }
 
-.customCard{
-    text-align: center;
+.customCard {
+  text-align: center;
 }
 
-.customWrapper{
-    margin-bottom: 75px;
+.customWrapper {
+  margin-bottom: 75px;
 }
 
+@media (min-width: 0px) and (max-width: 435px) {
+  .customCardSize {
+    max-width: 10rem;
+  }
+}
