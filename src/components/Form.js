@@ -4,44 +4,47 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import ModalLogin from "./Modal";
 import { useHistory } from "react-router";
+import { useState } from "react";
 
 const FormLogin = () => {
-  const baseURL = "http://challenge-react.alkemy.org/";
+  const history = useHistory();
+  const [post, setPost] = useState(null);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const baseURL = process.env.REACT_APP_BASE_ALKEMY_URL;
   const validateForm = (values) => {
     const errors = {};
 
     if (!values.email) {
-      errors.email = "Email is required";
+      errors.email = "El Email es requerido.";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
-      errors.email = "Invalid email address";
+      errors.email = "Email inválido";
     }
 
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = "El Password es requerido.";
     } else if (values.password.length < 5) {
-      errors.password = "Must not be 5 characters or less";
+      errors.password = "El Password no puede ser menor a 5 caracteres.";
     }
     return errors;
   };
 
-  const [post, setPost] = React.useState(null);
-  const [showLogin, setShowLogin] = React.useState(false);
-  const [token, setToken] = React.useState("");
   /*
   React.useEffect(() => {
     axios.get(`${baseURL}`).then((response) => {
       setPost(response.data);
     });
   }, []);
-    */
+    
   const handle = () => {
     localStorage.setItem("Token", token);
   };
   const remove = () => {
     localStorage.removeItem("Token");
   };
+*/
 
   function createPost(email, password) {
     axios
@@ -51,33 +54,25 @@ const FormLogin = () => {
       })
       .then((response) => {
         setPost(response.data.token);
-        setToken(response.data.token);
+        localStorage.setItem("Token", response.data.token);
+        history.push("/home");
       })
       .catch((error) => {
         setShowLogin(true);
-        //alert(`Error: ${error.message}`);
-        //console.error('There was an error!', error);
+        localStorage.setItem("Token", null);
       });
   }
 
-  const history = useHistory();
-  if (token) {
-    history.push("/home");
-  }
-
   return (
-    <div>
+    <>
       {showLogin && (
-        <ModalLogin title="Error 401 - Sin Autoriazción" body="El Email y Password ingresados no son correctos." show={showLogin} close={() => setShowLogin(false)} />
+        <ModalLogin title="Error 401 - Sin Autoriazción" body="El Email y/o Password ingresados no son correctos." show={showLogin} close={() => setShowLogin(false)} />
       )}
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          //
           setTimeout(() => {
-            //alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
-            setToken("");
             createPost(values.email, values.password);
           }, 1000);
         }}
@@ -125,7 +120,7 @@ const FormLogin = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </>
   );
 };
 

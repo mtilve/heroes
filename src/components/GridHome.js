@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CardHome from "./CardHome";
 
-function GridHome(props) {
+function GridHome(props)
   {
     return (
         <Container>
@@ -24,6 +24,5 @@ function GridHome(props) {
         </Container>
     );
   }
-}
 
 export default GridHome;

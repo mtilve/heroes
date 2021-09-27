@@ -1,18 +1,26 @@
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import { Formik, Field, Form } from "formik";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import CardSearch from "../components/CardSearch";
-import NavHome  from "../components/NavBar";
-import Footer from "../components/Footer";
+import NavHome from "../components/NavBar";
+import { useHistory } from "react-router";
 
 function Search(props) {
-  const baseURL = "https://superheroapi.com/api.php/10225949487784340/search/";
+  const history = useHistory();
+  let token = localStorage.getItem("Token");
+  if (!token) {
+    localStorage.removeItem("Token");
+    history.push("/");
+  }
+
+  const baseURL =
+    process.env.REACT_APP_BASE_HERO_API +
+    process.env.REACT_APP_TOKEN +
+    "/search/";
   const [isLoading, setIsLoading] = useState(true);
   const [loadedHeroes, setLoadedHeroes] = useState([]);
 
@@ -37,7 +45,6 @@ function Search(props) {
         } else {
           setLoadedHeroes([]);
         }
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -65,35 +72,35 @@ function Search(props) {
       }
       return items;
     }
+
     items.push(
-      <>
-        <Col
-          key={997}
-          xs={6}
-          md={4}
-          className="d-flex justify-content-center"
-        ></Col>
-        <Col 
-          key={998}
-          xs={6} 
-          md={4} 
-          className="d-flex justify-content-center">
-          Sin datos
-        </Col>
-        <Col
-          key={999}
-          xs={6}
-          md={4}
-          className="d-flex justify-content-center"
-        ></Col>
-      </>
+      <Col
+        key={997}
+        xs={6}
+        md={4}
+        className="d-flex justify-content-center"
+      ></Col>
     );
+    items.push(
+      <Col key={998} xs={6} md={4} className="d-flex justify-content-center">
+        Sin datos
+      </Col>
+    );
+    items.push(
+      <Col
+        key={999}
+        xs={6}
+        md={4}
+        className="d-flex justify-content-center"
+      ></Col>
+    );
+
     return items;
   }
 
   return (
     <div className="container">
-      <NavHome home={false} search={true} detail={false}/>
+      <NavHome home={false} search={true} detail={false} />
       <div className="form-wrapper"></div>
       <Formik
         initialValues={{ query: "" }}
@@ -134,10 +141,9 @@ function Search(props) {
         )}
       </Formik>
 
-      <Container className="mt-2 customWrapper">
+      <Container className="mt-2">
         <Row>{createItems()}</Row>
       </Container>
-      <Footer/>
     </div>
   );
 }

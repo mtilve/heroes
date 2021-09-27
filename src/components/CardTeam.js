@@ -4,37 +4,23 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useContext } from "react";
-import GeneralContext from "../store/GeneralContext";
 
 function CardTeam(props) {
-  let content1;
-  let content2;
-  let content3;
+  let content1 = [];
+  let content2 = [];
+  let content3 = [];
 
   if (props.heroes.length === 0) {
-    content1 = (
-      <>
-        <ListGroup.Item>Inteligencia: 0</ListGroup.Item>
-        <ListGroup.Item>Fuerza: 0</ListGroup.Item>
-        <ListGroup.Item>Velocidad: 0</ListGroup.Item>
-      </>
-    );
+    content1.push(<ListGroup.Item key={100}>Inteligencia: 0</ListGroup.Item>);
+    content1.push(<ListGroup.Item key={101}>Fuerza: 0</ListGroup.Item>);
+    content1.push(<ListGroup.Item key={102}>Velocidad: 0</ListGroup.Item>);
 
-    content2 = (
-      <>
-        <ListGroup.Item>Durabilidad: 0</ListGroup.Item>
-        <ListGroup.Item>Poder: 0</ListGroup.Item>
-        <ListGroup.Item>Combate: 0</ListGroup.Item>
-      </>
-    );
+    content2.push(<ListGroup.Item key={103}>Durabilidad: 0</ListGroup.Item>);
+    content2.push(<ListGroup.Item key={104}>Poder: 0</ListGroup.Item>);
+    content2.push(<ListGroup.Item key={105}>Combate: 0</ListGroup.Item>);
 
-    content3 = (
-        <>
-          <ListGroup.Item>Altura Promedio: 0 cm</ListGroup.Item>
-          <ListGroup.Item>Peso Promedio: 0 kg</ListGroup.Item>
-        </>
-      );
+    content3.push(<ListGroup.Item key={106}>Altura Promedio: 0 cm</ListGroup.Item>);
+    content3.push(<ListGroup.Item key={107}>Peso Promedio: 0 kg</ListGroup.Item>);
 
   } else {
     let content = sortSumPowerstats();
@@ -74,50 +60,49 @@ function CardTeam(props) {
     arrayStats.sort(function (a, b) {
       return b[1] - a[1];
     });
-    console.log(arrayStats);
 
     for (var i = 0; i < arrayStats.length; i++) {
       switch (arrayStats[i][0]) {
         case "combat":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Combate: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={108}>Combate: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Combate: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={109}>Combate: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         case "intelligence":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Inteligencia: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={110}>Inteligencia: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Inteligencia: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={111}>Inteligencia: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         case "durability":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Durabilidad: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={112}>Durabilidad: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Durabilidad: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={113}>Durabilidad: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         case "power":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Poder: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={114}>Poder: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Poder: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={115}>Poder: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         case "speed":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Velocidad: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={116}>Velocidad: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Velocidad: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={117}>Velocidad: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         case "strength":
           if (i < 3) {
-            content1.push(<ListGroup.Item>Fuerza: {arrayStats[i][1]}</ListGroup.Item>);
+            content1.push(<ListGroup.Item key={118}>Fuerza: {arrayStats[i][1]}</ListGroup.Item>);
           } else {
-            content2.push(<ListGroup.Item>Fuerza: {arrayStats[i][1]}</ListGroup.Item>);
+            content2.push(<ListGroup.Item key={119}>Fuerza: {arrayStats[i][1]}</ListGroup.Item>);
           }
           break;
         default:
@@ -136,14 +121,14 @@ function CardTeam(props) {
           .reduce((prev, curr) => prev + curr, 0)
     };
 
-    content3.push(<ListGroup.Item>Altura Promedio: {(height_weight.height / heroes.length).toFixed(2)} cm</ListGroup.Item>);    
-    content3.push(<ListGroup.Item>Peso Promedio: {(height_weight.weight / heroes.length).toFixed(2)} kg</ListGroup.Item>);
+    content3.push(<ListGroup.Item key={120}>Altura Promedio: {(height_weight.height / heroes.length).toFixed(2)} cm</ListGroup.Item>);    
+    content3.push(<ListGroup.Item key={121}>Peso Promedio: {(height_weight.weight / heroes.length).toFixed(2)} kg</ListGroup.Item>);
 
     return [content1, content2, content3];
   }
 
   return (
-    <>
+    <div>
       <Container className="mt-2 mb-2">
         <Row>
         <Col
@@ -178,7 +163,7 @@ function CardTeam(props) {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
 
