@@ -61,11 +61,11 @@ function CardSearch(props) {
   }
 
   return (
-    <>
+    <div key={props.hero.id}>
       {showModal && (
-        <ModalLogin title="Error" body={textModal} show={showModal} close={() => setShowModal(false)} />
+        <ModalLogin key={props.hero.id} title="Error" body={textModal} show={showModal} close={() => setShowModal(false)} />
       )}
-      <Card style={{ width: "12rem" }}>
+      <Card key={props.hero.id} style={{ width: "12rem" }}>
         <Card.Img variant="top" src={props.hero.image.url} />
         <Card.Body>
           <Card.Title>{props.hero.name}</Card.Title>
@@ -79,7 +79,7 @@ function CardSearch(props) {
           </Button>
         </Card.Footer>
       </Card>
-    </>
+    </div>
   );
 }
 

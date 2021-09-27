@@ -5,9 +5,17 @@ import GeneralContext from "../store/GeneralContext";
 import CardTeam from "../components/CardTeam";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Footer from "../components/Footer";
+import { useHistory } from "react-router";
 
 function Home() {
+  
+  const history = useHistory();
+  let token = localStorage.getItem('Token');
+  if (!token){
+    localStorage.removeItem("Token");
+    history.push("/");
+  }
+
   const generalCtx = useContext(GeneralContext);
   let content;
 
@@ -38,11 +46,10 @@ function Home() {
   return (
     <div className="container">
       <NavHome home={true} search={false} detail={false}/>
-      <div className="form-wrapper customWrapper">
+      <div className="form-wrapper">
         <CardTeam heroes={generalCtx.heroes}/>
         {content}
       </div>
-      <Footer/>
     </div>
   );
 }

@@ -3,12 +3,14 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 function NavHome(props) {
   const history = useHistory();
 
-  function searchHandler() {
-    history.push("/search");
+  function logoutHandler(){
+    localStorage.removeItem("Token");
+    history.push("/");
   }
 
   return (
@@ -46,6 +48,10 @@ function NavHome(props) {
             style={{ maxHeight: "100px" }}
             navbarScroll
           ></Nav>
+        <Nav className="me-auto"></Nav>
+        <Nav>
+        <Button type="button" variant="light"onClick={logoutHandler}>Logout</Button>
+        </Nav>
         </Navbar.Collapse>
       </Navbar>
   );
