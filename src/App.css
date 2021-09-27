@@ -1,0 +1,20 @@
+
+.customRow {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: #bbeffd;
+    border: 1px solid #61dafb;
+}
+
+.customButton {
+    min-width: 25%;
+}
+
+.customCard{
+    text-align: center;
+}
+
+.customWrapper{
+    margin-bottom: 75px;
+}
+
