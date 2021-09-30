@@ -21,7 +21,7 @@
 </div>
 <br>
 <div align="center">
-<img src="https://github.com/mtilve/test/blob/master/heroes_3.png" height="200px" width="200px" >
+<img src="https://github.com/mtilve/test/blob/master/heroes_3.png" height="200px" width="150px" >
 <img src="https://github.com/mtilve/test/blob/master/heroes_5.png" height="200px" width="200px" >
-<img src="https://github.com/mtilve/test/blob/master/heroes_7.png" height="200px" width="200px" >
+<img src="https://github.com/mtilve/test/blob/master/heroes_7.png" height="200px" width="150px" >
 </div>
